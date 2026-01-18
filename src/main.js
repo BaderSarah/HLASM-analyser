@@ -26,7 +26,3 @@ require(['vs/editor/editor.main'], () => {
     }
   );
 });
-
-
-const code = editor.getValue();
-console.log(code); 
