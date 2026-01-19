@@ -1,6 +1,7 @@
 import { state } from "../state.js";
 
 export function initEditor() {
+
   return new Promise((resolve) => {
     require.config({
       paths: {
@@ -10,6 +11,7 @@ export function initEditor() {
 
     require(["vs/editor/editor.main"], () => {
       state.editor = monaco.editor.create(
+        
         document.getElementById("editor"),
         {
             value: '',
@@ -28,11 +30,13 @@ export function initEditor() {
             rulers: [0, 9, 15, 71, 73]
         }
       );
+
       resolve();
     });
+
   });
 }
 
 export function setLanguage(lang) {
   monaco.editor.setModelLanguage(state.editor.getModel(), lang);
-}
+} // # TODO add HLASM

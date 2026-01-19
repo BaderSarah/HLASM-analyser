@@ -4,7 +4,6 @@ export function initMermaid() {
   }
 
   window.mermaid.initialize({
-    startOnLoad: false,
-    securityLevel: "loose"
+    startOnLoad: false
   });
 }
