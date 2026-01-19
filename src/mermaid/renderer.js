@@ -25,12 +25,14 @@ function render(code) {
   mermaid.run();
 }
 
+// # TODO - fix bug
 function zoom(delta) {
   state.zoom = Math.min(3, Math.max(0.2, state.zoom + delta));
   chart.style.transform = `scale(${state.zoom})`;
   chart.style.transformOrigin = "center";
 }
 
+// # TODO - fix bug
 function reset() {
   state.zoom = 1;
   chart.style.transform = "scale(1)";
