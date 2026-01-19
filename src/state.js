@@ -3,5 +3,6 @@ export const state = {
   hlasmCode: "",
   mermaidCode: "",
   zoom: 1,
-  editor: null
+  editor: null,
+  theme: "light"
 };
