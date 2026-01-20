@@ -1,29 +1,31 @@
 import { saveState, state } from "./state.js";
 
 export function initTheme() {
+    setTheme(); 
+
     const btn = document.getElementById("theme-toggle");
-
     btn.addEventListener("click", () => {
-        console.log("btn pressed");
         state.theme = state.theme === "dark" ? "light" : "dark";
-
         saveState(); 
-
-        if (state.theme === "dark") {
-            document.body.classList.add("dark");
-            document.body.style.backgroundColor = "#1f2428";
-        } else {
-            document.body.classList.remove("dark");
-            document.body.style.backgroundColor = "";
-        }
-
-        if (state.editor) {
-            const monacoTheme = state.theme === "dark" ? "github-dark" : "vs";
-            monaco.editor.setTheme(monacoTheme);
-        }
-
+        setTheme(); 
     });
 };
+
+function setTheme(){
+
+    if (state.theme === "dark") {
+        document.body.classList.add("dark");
+        document.body.style.backgroundColor = "#1f2428";
+    } else {
+        document.body.classList.remove("dark");
+        document.body.style.backgroundColor = "";
+    }
+    
+    if (state.editor) {
+        const monacoTheme = state.theme === "dark" ? "github-dark" : "vs";
+        monaco.editor.setTheme(monacoTheme);
+    }
+}
 
 export const githubDarkTheme = {
     base: 'vs-dark', 

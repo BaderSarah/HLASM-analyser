@@ -7,6 +7,18 @@
     <title>HLASM Static-Analyser</title>
   </head>
   <body>
+    <script>
+      (function () {
+        const savedState = localStorage.getItem("app_state");
+        if (savedState) {
+          const state = JSON.parse(savedState);
+          if (state.theme === "dark") {
+            document.body.classList.add("dark");
+            document.body.style.backgroundColor = "#1f2428";
+          }
+        }
+      })();
+    </script>
     <header>
       <p id="title">HLASM Static-Analyser</p>
       <div>

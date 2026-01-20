@@ -7,7 +7,7 @@ const defaultState = {
   mermaidCode: "",
   zoom: 1,
   editor: null,
-  theme: "dark"
+  theme: "light"
 };
 
 export const state = savedState ? JSON.parse(savedState) : defaultState;
