@@ -1,4 +1,4 @@
-import { state } from "../state.js";
+import { saveState, state } from "../state.js";
 
 const chart = document.getElementById("chart");
 const preview = document.getElementById("preview");
@@ -30,6 +30,8 @@ function zoom(delta) {
   state.zoom = Math.min(3, Math.max(0.2, state.zoom + delta));
   chart.style.transform = `scale(${state.zoom})`;
   chart.style.transformOrigin = "center";
+
+  saveState(); 
 }
 
 // # TODO - fix bug

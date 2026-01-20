@@ -1,4 +1,4 @@
-import { state } from "./state.js";
+import { saveState, state } from "./state.js";
 
 export function initTheme() {
     const btn = document.getElementById("theme-toggle");
@@ -6,6 +6,8 @@ export function initTheme() {
     btn.addEventListener("click", () => {
         console.log("btn pressed");
         state.theme = state.theme === "dark" ? "light" : "dark";
+
+        saveState(); 
 
         if (state.theme === "dark") {
             document.body.classList.add("dark");
@@ -19,6 +21,7 @@ export function initTheme() {
             const monacoTheme = state.theme === "dark" ? "github-dark" : "vs";
             monaco.editor.setTheme(monacoTheme);
         }
+
     });
 };
 
@@ -43,7 +46,7 @@ export const githubDarkTheme = {
         'editorRuler.foreground': '#444d56',
         'editorIndentGuide.background': '#373e47',
         'editorIndentGuide.activeBackground': '#444d56',
-        // 'editor.lineHighlightBackground': '#2b3137',
+        'editor.lineHighlightBackground': '#2b3137',
         'editor.selectionBackground': '#0366d625',
         'editorCursor.foreground': '#c8e1ff',
     }

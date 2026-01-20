@@ -20,8 +20,7 @@ export function initEditor() {
         {
             value: '',
             language: 'plaintext',
-            // theme: 'vs-light',
-            theme: 'github-dark', 
+            theme: 'vs-light',
             automaticLayout: true,
             fontSize: 14,
             lineHeight: 20,

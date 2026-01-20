@@ -5,9 +5,9 @@ import { initPreview } from "./mermaid/renderer.js";
 import { initTheme } from "./theme.js"; 
 
 (async function init() {
-  initMermaid();
   await initEditor();
+  initTheme();
+  initMermaid();
   initToolbar();
   initPreview();
-  initTheme();
 })();

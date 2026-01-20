@@ -34,7 +34,7 @@ header {
         font-weight: 700;
         font-size: large;
         border-right: 1.5px solid #e5e7eb;
-        padding-right: 20px;
+        padding-right: 10px;
     }
 
     #description{
@@ -47,7 +47,7 @@ header {
     div{
         display: flex;
         justify-content: right;
-        width: 45%;
+        width: 40%;
     }
 
     #theme-toggle{
@@ -156,8 +156,15 @@ header {
     padding: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: end;
-    gap: 5px;
+    justify-content: space-between;
+    
+    
+    div{
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        gap: 5px;
+    }
 
     button{
         background: #ececec;
@@ -172,6 +179,7 @@ header {
         background: #c8c8c8;
         border-radius: 6px;
     }
+
 }
 
 /* footer */

@@ -1,4 +1,4 @@
-import { state } from "../state.js";
+import { saveState, state } from "../state.js";
 import { setLanguage } from "./monaco.js";
 import { hlasmToMermaid } from "../parser.js";
 
@@ -12,8 +12,6 @@ export function initToolbar() {
   document.getElementById("copy").onclick = copyCode;
 
   function switchToHLASM() {
-    if (state.mode === "hlasm") return;
-
     if (state.editor) {
         state.editor.updateOptions({
             rulers: [0, 9, 15, 71, 73]
@@ -26,11 +24,10 @@ export function initToolbar() {
 
     setActive(0);
     state.mode = "hlasm";
+    saveState(); 
   }
 
   function switchToMermaid() {
-    if (state.mode === "mermaid") return; 
-
     if (state.editor) {
         state.editor.updateOptions({
             rulers: []
@@ -47,6 +44,7 @@ export function initToolbar() {
 
     setActive(1);
     state.mode = "mermaid";
+    saveState(); 
   }
 
   function goToDocs() {
