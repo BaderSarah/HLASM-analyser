@@ -1,3 +1,4 @@
+import { initMermaid } from "./mermaid/init.js";
 import { saveState, state } from "./state.js";
 
 export function initTheme() {
@@ -25,6 +26,9 @@ function setTheme(){
         const monacoTheme = state.theme === "dark" ? "github-dark" : "vs";
         monaco.editor.setTheme(monacoTheme);
     }
+
+    initMermaid(); 
+    document.getElementById("run").click(); 
 }
 
 export const githubDarkTheme = {

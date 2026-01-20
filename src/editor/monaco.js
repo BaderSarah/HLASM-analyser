@@ -34,9 +34,9 @@ export function initEditor() {
             rulers: [0, 9, 15, 71, 73]
         }
       );
-
-      if (state.mode == "hlasm") state.editor.setValue(state.hlasmCode); 
-      else state.editor.setValue(state.mermaidCode); 
+        // set to HLASM editor
+        state.mode = "hlasm"; 
+        state.editor.setValue(state.hlasmCode); 
 
       resolve();
     });

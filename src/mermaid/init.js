@@ -6,6 +6,7 @@ export function initMermaid() {
   }
 
   const theme = state.theme === "dark" ? "dark" : "default"; 
+  console.log(theme); 
 
   const config = {
     startOnLoad: false,
@@ -15,7 +16,7 @@ export function initMermaid() {
         useMaxWidth: true, 
         htmlLabels: true
     }
-  }; 
+  };
 
   window.mermaid.initialize(config);
 }

@@ -15,6 +15,8 @@ export function initPreview() {
   state.editor.onKeyDown((k) => {
           if (k.keyCode === 3) convert();
       });
+
+  window.onbeforeunload = convert(); 
 }
 
 function convert() {
