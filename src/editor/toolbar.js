@@ -14,6 +14,12 @@ export function initToolbar() {
   function switchToHLASM() {
     if (state.mode === "hlasm") return;
 
+    if (state.editor) {
+        state.editor.updateOptions({
+            rulers: [0, 9, 15, 71, 73]
+        });
+    }
+
     state.mermaidCode = state.editor.getValue();
     state.editor.setValue(state.hlasmCode);
     setLanguage("python"); // # TODO add HLASM syntax
@@ -24,6 +30,12 @@ export function initToolbar() {
 
   function switchToMermaid() {
     if (state.mode === "mermaid") return; 
+
+    if (state.editor) {
+        state.editor.updateOptions({
+            rulers: []
+        });
+    }
 
     state.hlasmCode = state.editor.getValue();
     state.mermaidCode = state.hlasmCode
