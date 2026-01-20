@@ -12,18 +12,18 @@ export function initToolbar() {
   document.getElementById("copy").onclick = copyCode;
 
   function switchToHLASM() {
-    if (state.mode === "hlasm") return; // already set to HLASM
+    if (state.mode === "hlasm") return;
 
     state.mermaidCode = state.editor.getValue();
     state.editor.setValue(state.hlasmCode);
-    setLanguage("plaintext"); // # TODO add HLASM syntax
+    setLanguage("python"); // # TODO add HLASM syntax
 
     setActive(0);
     state.mode = "hlasm";
   }
 
   function switchToMermaid() {
-    if (state.mode === "mermaid") return; // already set to Mermaid
+    if (state.mode === "mermaid") return; 
 
     state.hlasmCode = state.editor.getValue();
     state.mermaidCode = state.hlasmCode

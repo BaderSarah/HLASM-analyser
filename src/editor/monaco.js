@@ -1,4 +1,5 @@
 import { state } from "../state.js";
+import { githubDarkTheme } from "../theme.js"; 
 
 export function initEditor() {
 
@@ -10,13 +11,17 @@ export function initEditor() {
     });
 
     require(["vs/editor/editor.main"], () => {
+      
+      monaco.editor.defineTheme('github-dark', githubDarkTheme);
+
       state.editor = monaco.editor.create(
         
         document.getElementById("editor"),
         {
             value: '',
             language: 'plaintext',
-            theme: 'vs-light',
+            // theme: 'vs-light',
+            theme: 'github-dark', 
             automaticLayout: true,
             fontSize: 14,
             lineHeight: 20,

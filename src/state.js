@@ -4,5 +4,5 @@ export const state = {
   mermaidCode: "",
   zoom: 1,
   editor: null,
-  theme: "light"
+  theme: "dark"
 };
