@@ -1,9 +1,13 @@
-export function hlasmToMermaid(code) {
+import { state } from "./state.js";
+
+export function hlasmToMermaid() {
+
+  const code = state.hlasmCode; 
+  // state.hlasmCode
   if (!code.trim()) return "";
 
-  return `
-flowchart TD
+  return `flowchart TD
   A[START] --> B[Parsed HLASM]
   B --> C[END]
-`; // #TODO
+`; // TODO
 }

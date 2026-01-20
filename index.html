@@ -16,6 +16,10 @@
             document.body.classList.add("dark");
             document.body.style.backgroundColor = "#1f2428";
           }
+          if (state.editor) {
+            const monacoTheme = state.theme === "dark" ? "github-dark" : "vs";
+            monaco.editor.setTheme(monacoTheme);
+          }
         }
       })();
     </script>

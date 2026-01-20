@@ -1,21 +1,38 @@
 import { saveState, state } from "../state.js";
+import { hlasmToMermaid }   from "../parser.js";
 
-const chart = document.getElementById("chart");
-const preview = document.getElementById("preview");
+const chart  = document.getElementById("chart");
 
 export function initPreview() {
-  preview.addEventListener("mouseenter", () => {
-    if (state.mode !== "mermaid") return;
-    render(state.editor.getValue());
-  });
 
   document.getElementById("plus").onclick = () => zoom(0.1);
-  document.getElementById("min").onclick = () => zoom(-0.1);
-  document.getElementById("rst").onclick = reset;
+  document.getElementById("min").onclick  = () => zoom(-0.1);
+
+  document.getElementById("rst").onclick  = reset;
   document.getElementById("dwnl").onclick = download;
+  document.getElementById("run").onclick  = convert; 
+
+  state.editor.onKeyDown((k) => {
+          if (k.keyCode === 3) convert();
+      });
 }
 
-function render(code) {
+function convert() {
+    if (state.mode === "hlasm") {
+
+        state.hlasmCode = state.editor.getValue();
+        saveState(); 
+        state.mermaidCode = hlasmToMermaid();
+
+    } else {
+        state.mermaidCode = state.editor.getValue();
+        saveState(); 
+    }
+    render(state.mermaidCode);
+}
+
+
+export function render(code) {
   if (!code.trim()) {
     chart.innerHTML = "";
     return;

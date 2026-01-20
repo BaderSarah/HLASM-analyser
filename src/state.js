@@ -1,6 +1,5 @@
 const KEY = "app_state";
 
-const savedState = localStorage.getItem(KEY);
 const defaultState = {
   mode: "hlasm",
   hlasmCode: "",
@@ -10,9 +9,11 @@ const defaultState = {
   theme: "light"
 };
 
-export const state = savedState ? JSON.parse(savedState) : defaultState;
+const savedState = localStorage.getItem(KEY);
 
 export const saveState = () => {
   const { editor, ...toSave } = state; 
   localStorage.setItem(KEY, JSON.stringify(toSave));
 };
+
+export const state = savedState ? JSON.parse(savedState) : defaultState;

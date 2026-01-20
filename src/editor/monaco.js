@@ -35,9 +35,11 @@ export function initEditor() {
         }
       );
 
+      if (state.mode == "hlasm") state.editor.setValue(state.hlasmCode); 
+      else state.editor.setValue(state.mermaidCode); 
+
       resolve();
     });
-
   });
 }
 

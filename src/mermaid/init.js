@@ -1,9 +1,21 @@
+import { state } from "../state.js";
+
 export function initMermaid() {
   if (!window.mermaid) {
     throw new Error("Mermaid not loaded.");
   }
 
-  window.mermaid.initialize({
-    startOnLoad: false
-  });
+  const theme = state.theme === "dark" ? "dark" : "default"; 
+
+  const config = {
+    startOnLoad: false,
+    securityLevel: 'loose',
+    theme : theme, 
+    flowchart: {
+        useMaxWidth: true, 
+        htmlLabels: true
+    }
+  }; 
+
+  window.mermaid.initialize(config);
 }

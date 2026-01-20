@@ -1,6 +1,5 @@
 import { saveState, state } from "../state.js";
 import { setLanguage } from "./monaco.js";
-import { hlasmToMermaid } from "../parser.js";
 
 export function initToolbar() {
   const tabs = document.querySelectorAll(".tab");
@@ -12,15 +11,17 @@ export function initToolbar() {
   document.getElementById("copy").onclick = copyCode;
 
   function switchToHLASM() {
+
+    // customize editor
     if (state.editor) {
         state.editor.updateOptions({
-            rulers: [0, 9, 15, 71, 73]
+            rulers: [0, 9, 15, 71, 73],
+            tabSize: 3,
         });
+        setLanguage("plaintext"); // TODO ; hlasm syntax
     }
 
-    state.mermaidCode = state.editor.getValue();
-    state.editor.setValue(state.hlasmCode);
-    setLanguage("python"); // # TODO add HLASM syntax
+    state.editor.setValue(state.hlasmCode); 
 
     setActive(0);
     state.mode = "hlasm";
@@ -28,19 +29,17 @@ export function initToolbar() {
   }
 
   function switchToMermaid() {
+
+    // customize editor
     if (state.editor) {
         state.editor.updateOptions({
-            rulers: []
+            rulers: [],
+            tabSize: 4,
         });
+        setLanguage("markdown");
     }
 
-    state.hlasmCode = state.editor.getValue();
-    state.mermaidCode = state.hlasmCode
-      ? hlasmToMermaid(state.hlasmCode)
-      : "";
-
-    state.editor.setValue(state.mermaidCode);
-    setLanguage("markdown");
+    state.editor.setValue(state.mermaidCode); 
 
     setActive(1);
     state.mode = "mermaid";
@@ -56,7 +55,10 @@ export function initToolbar() {
   }
 
    function copyCode() {
-    const textToCopy = "insert code"; // # TODO
+    const textToCopy = state.mode === "hlasm" 
+    ? state.hlasmCode 
+    : state.mermaidCode;
+
     navigator.clipboard.writeText(textToCopy);
   }
 
