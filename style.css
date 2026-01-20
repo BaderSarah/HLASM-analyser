@@ -26,32 +26,21 @@ body {
 header {
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-between;
     height: 10vh;
     
     #title{
         padding-left: 25px;
         font-weight: 700;
         font-size: large;
-        border-right: 1.5px solid #e5e7eb;
-        padding-right: 10px;
-    }
-
-    #description{
-        padding-left: 20px;
-        padding-top: 8px;
-        font-style: italic;
-        font-size: smaller;
     }
 
     div{
-        display: flex;
-        justify-content: right;
-        width: 40%;
+        padding-right: 25px;
     }
 
     #theme-toggle{
-        margin-top: 15px;
+        margin-top: 10px;
     }
 }
 
@@ -251,12 +240,6 @@ footer{
     #github{
         color: #e1e4e3;
     }
-
-    header{
-        #title{
-            border-right: 1.5px solid #c4c4c4;
-        }
-    }
 }
 
 /* theme switcher icon */
@@ -309,7 +292,9 @@ body.dark .icon-moon {
 
 
 /* responsiveness */
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
+    header{display: none;}
+
     #workspace {
         display: flex;
         flex-direction: column;
