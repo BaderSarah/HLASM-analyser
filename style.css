@@ -6,19 +6,32 @@ html{
 }
 
 body {
+    height: 100vh; 
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+}
+
+body {
     min-height: 100vh;
 
     margin: 0;
-    height: 100%;
+    /* height: 100%; */
     padding: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; */
     
     color: #2b2c2c;
     background-color: #f7f7f7;
+}
+
+main {
+    flex: 1;
+    overflow: hidden;
+    display: flex; 
 }
 
 /* ------------------ Header section ----------------- */
@@ -27,7 +40,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 10vh;
+    height: 55px;
     
     #title{
         padding-left: 25px;
@@ -47,29 +60,31 @@ header {
 /* -------------------- Main section ----------------- */
 
 #workspace {
-  flex-grow: 1;
-  min-height: 0;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 76vh;
-
-  gap: 20px;
-  padding: 20px;
-  padding-top: 5px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    min-height: 0;
+    height: 100%; 
 }
 
 /* Left space */
 
-#codespace{
+#codespace {
   display: grid;
   grid-template-rows: 48px 1fr;
-  height: 100%;
-  min-height: 40vh;
-  max-height: 76vh;
-
+  height: 94%; 
   border: #ececec solid 2.5px;
   border-radius: 12.5px;
+  overflow: hidden;
+  min-height: 0; 
+}
+
+#editor {
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
 }
 
 #toolbar {
@@ -117,11 +132,11 @@ header {
 /* Right space */
 
 #preview {
-  overflow: auto;
   display: grid;
   grid-template-rows: 1fr 40px;
-  height: 100%;
-  min-height: 40vh;
+  height: 94.25%;
+  min-height: 0; 
+  overflow: hidden;
 
   border: #ececec solid 1.5px;
   border-radius: 12.5px;
@@ -190,7 +205,8 @@ header {
 footer{
     display: flex;
     justify-content: space-between;
-    height: auto; 
+    height: 40px; 
+    padding-top: 15px;
 }
 
 #github{
@@ -307,15 +323,21 @@ body.dark .icon-moon {
 
 /* responsiveness */
 @media (max-width: 1100px) {
-    header{display: none;}
+    header,footer{display: none;}
 
     #workspace {
         display: flex;
         flex-direction: column;
         height: auto; 
+        padding-top: 20px;
     }
 
     #codespace, #preview {
         height: 40vh; 
+    }
+
+    #editor{
+        max-width: 98vw;
+        max-height: 30vh;
     }
 }
