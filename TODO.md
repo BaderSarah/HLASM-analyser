@@ -1,0 +1,6 @@
+- [ ] make Mermaid editor view-only
+- [ ] HLASM syntax highlighting 
+- [ ] parse HLASM to Mermaid
+- [ ] provide example page
+- [ ] add tutorial
+- [ ] complete README

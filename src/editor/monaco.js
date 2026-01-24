@@ -19,7 +19,7 @@ export function initEditor() {
         document.getElementById("editor"),
         {
             value: '',
-            language: 'plaintext',
+            language: 'python',
             theme: 'vs-light',
             automaticLayout: true,
             fontSize: 14,
